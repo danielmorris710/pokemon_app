@@ -18,6 +18,10 @@ app.get('/pokemon', function(req,res){
     res.render('Index', {pokemon})
 })
 
+app.get('/pokemon/:id', function(req,res){
+    res.send(req.params.id)
+})
+
 //port 
 app.listen(port, function() {
     console.log('Listening on port 3000');
