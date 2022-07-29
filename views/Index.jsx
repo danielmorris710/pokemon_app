@@ -1,8 +1,12 @@
 const React = require('react')
 
 const myStyle = {
-    color: 'blue',
-    backgroundColor: 'yellow',
+    color: '#2a75bb',
+    backgroundColor: '#ffcb05',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   };
 
 class Index extends React.Component {
