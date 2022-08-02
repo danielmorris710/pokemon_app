@@ -120,7 +120,7 @@ You will have to set up your jsx file
 
 Start with your html boilerplate code
 
-Add an '<h1>' that describes this page, i.e. 'See All The Pokemon!'
+Add an </h1> that describes this page, i.e. 'See All The Pokemon!'
 
 Try adding some inline styles:
 
