@@ -15,8 +15,8 @@ class Show extends React.Component {
     return (
     <div style = {myStyle}>
       <h1> 'Gotta Catch 'Em All' </h1>
-      <h2>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h2>
-      <img src={pokemon.img} />
+      <h2>{pokemon.name}</h2>
+      <img src={`http://img.pokemondb.net/artwork/${pokemon.name.toLowerCase()}.jpg`}></img>
       <br/>
         <nav>
           <a href="/pokemon"> Back </a>

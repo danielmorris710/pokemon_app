@@ -20,7 +20,7 @@ class Index extends React.Component {
             return(
                 <li>
                    <a href={`/pokemon/${pokemon.id}`}> 
-                    {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+                    {pokemon.name}
                     </a>
                 </li>
             )

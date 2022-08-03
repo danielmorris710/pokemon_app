@@ -41,6 +41,7 @@ app.get('/pokemon/new', (req, res) => {
 
 //create
 app.post('/pokemon/', (req, res)=>{
+    req.body.name = req.body.name[0].toUpperCase() + req.body.name.slice(1)
     Pokemon.create(req.body, ()=>{
          res.redirect('/pokemon'); //send the user back to /pokemon
     });
