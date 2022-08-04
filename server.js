@@ -4,6 +4,8 @@ require('dotenv').config()
 const Pokemon = require('./models/pokemon')
 const app = express()
 const port = process.env.PORT || 3003
+const methodOverride = require('method-override')
+const pokemonData = require('./utilities/pokemonData')
 
 //connect to mongoose
 mongoose.connect(process.env.MONGO_URI, {
@@ -20,10 +22,20 @@ app.engine('jsx', require('express-react-views').createEngine()); //initializing
 
 //middleware
 app.use(express.urlencoded({extended:false}));
+app.use(methodOverride('_method'))
+
+//seed route
+app.get('/pokemon/seed', (req, res)=>{
+    //comment if you dont want to delete your entire collection
+    // Pokemon.deleteMany({}) --> not working for right now
+    //create a list of pokemon into our data
+    Pokemon.create(pokemonData)
+    res.redirect('/pokemon')
+})
 
 //my routes
-app.get('/', function(req, res){
-    res.send('Welcome to the Pokemon App!');
+app.get('/', (req, res) => {
+    res.render('Home')
 }) 
 
 app.get('/pokemon',(req,res)=>{
@@ -57,7 +69,37 @@ app.get('/pokemon/:id', (req,res)=>{
    })
 })
 
-//delete
+//edit page route
+app.get('/pokemon/:id/edit', (req,res)=>{
+    Pokemon.findById(req.params.id,(err, foundPokemon)=>{
+        if(!err){
+            res.render('Edit', {
+                pokemon: foundPokemon
+            })
+        }else{
+            res.send({
+                message:err.message
+            })
+        }
+    })
+})
+
+// update route
+app.put('/pokemon/:id', (req, res) => {
+    req.body.name = req.body.name[0].toUpperCase() + req.body.name.slice(1)
+    Pokemon.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    }, (error, pokemon) => {
+        res.redirect(`/pokemon/${req.params.id}`)
+    })
+})
+
+//delete route
+app.delete('/pokemon/:id', (req,res)=>{
+    Pokemon.findByIdAndRemove(req.params.id, (err, data)=>{
+        res.redirect('/pokemon')
+    })
+})
 
 //port 
 app.listen(port, () => {

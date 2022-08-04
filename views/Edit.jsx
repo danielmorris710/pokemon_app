@@ -9,19 +9,20 @@ const myStyle = {
       alignItems: 'center',
     };
 
-class New extends React.Component {
+class Edit extends React.Component {
   render() {
+    const pokemon = this.props.pokemon
     return (
         <div style = {myStyle}>
-            <h1>New Pokemon</h1>
+            <h1>Edit Pokemon</h1>
             {/* NOTE: action will be the route, method will be the HTTP verb */}
-            <form action="/pokemon" method="POST">
+            <form action={`/pokemon/${pokemon.id}?_method=PUT`} method="POST">
               Name: <input type="text" name="name" /><br/>
-              <input type="submit" name="" value="Catch Pokemon"/>
+              <input type="submit" name="" value="Edit Pokemon"/>
             </form>
             
         </div>);
     }
   }
 
-module.exports = New
+module.exports = Edit

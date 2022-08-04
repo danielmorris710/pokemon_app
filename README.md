@@ -211,4 +211,15 @@ When a user clicks on the name of the pokemon, they will be taken to that pokemo
 When a user goes to /pokemon/new a user sees a form that allows them to create a brand new pokemon, and then redirects the user back to /pokemon\
 Assignment\
 Continue working by adding a New and Create Route and incorporating Mongoose JS
-# pokemon_depo
+
+# Part Three
+
+Assignment\
+Add A Seed Route to Pokemon that adds the entire original pokemon array\
+Deploy your Pokemon App to Heroku at it's final complete form
+
+# Part Four 
+
+Assignment\
+Add Edit, Update and Delete functionality to your pokemon app\
+Deploy your Pokemon App to Heroku at it's final complete form

@@ -9,19 +9,31 @@ const myStyle = {
     alignItems: 'center',
   };
 
+const row = {
+    display: "flex", 
+    padding: "10px",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    justifyItems: "space-between" ,
+};
+
 class Index extends React.Component {
    render () {
     const { pokemon } = this.props
     return (
     <div style = {myStyle}>
-      <h1> 'See All The Pokemon!' </h1>
+      <h1> 'Welcome To Your PokeDex!' </h1>
+      <h2> 'See All The Pokemon!' </h2>
       <ul>
         {pokemon.map((pokemon) => {
             return(
-                <li>
+                <li style = {row}>
                    <a href={`/pokemon/${pokemon.id}`}> 
                     {pokemon.name}
                     </a>
+                    <form action={`/pokemon/${pokemon.id}?_method=DELETE`} method='POST'> <button type="submit"> Delete </button> </form>
+                    <a href={`/pokemon/${pokemon.id}/edit`}><button type="submit">Edit Pokemon</button></a>
                 </li>
             )
         })}
