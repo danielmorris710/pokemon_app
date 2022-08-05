@@ -25,11 +25,9 @@ app.use(express.urlencoded({extended:false}));
 app.use(methodOverride('_method'))
 
 //seed route
-app.get('/pokemon/seed', (req, res)=>{
-    //comment if you dont want to delete your entire collection
-    // Pokemon.deleteMany({}) --> not working for right now
-    //create a list of pokemon into our data
-    Pokemon.create(pokemonData)
+app.get('/pokemon/seed', async (req, res)=>{
+    await Pokemon.deleteMany({})
+    await Pokemon.create(pokemonData)
     res.redirect('/pokemon')
 })
 
